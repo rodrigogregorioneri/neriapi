@@ -17,7 +17,7 @@ public interface PedidosDAO extends JpaRepository<Pedidos, java.lang.String> {
    
   @Modifying
   @Query("DELETE FROM Pedidos entity WHERE entity.id = :id")
-  public void delete(@Param(value="id") java.lang.String id);
+  public void delete(@Param(value="id") java.lang.String id,@Param(value="datada_cadastro") java.lang.String datada_cadastro);
 
   @Query("select c from Pedidos c")
   public Page<Pedidos> list(Pageable pageable);

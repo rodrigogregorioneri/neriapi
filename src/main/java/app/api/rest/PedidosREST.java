@@ -34,8 +34,8 @@ public class PedidosREST {
   }
 
  
-  @RequestMapping(method = RequestMethod.PUT, value = "/{pedidosId}")
-  public Pedidos put(@Validated @RequestBody final Pedidos entity, @PathVariable("pedidosId") java.lang.String pedidosId) throws Exception {
+  @RequestMapping(method = RequestMethod.PUT, value = "/{pedidosId}/{datada_cadastro}")
+  public Pedidos put(@Validated @RequestBody final Pedidos entity, @PathVariable("pedidosId") java.lang.String pedidosId, @PathVariable("datada_cadastro") java.lang.String  datada_cadastro) throws Exception {
     return pedidosBusiness.put(entity);
   }  
 
