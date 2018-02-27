@@ -153,5 +153,5 @@ public class Pedidos implements Serializable {
     result = 31 * result + ((id == null) ? 0 : id.hashCode());
     return result;
   }
-  
+
 }
