@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.*;
 public interface PedidosDAO extends JpaRepository<Pedidos, java.lang.String> {
 
   
-  @Query("SELECT entity FROM Pedidos entity WHERE entity.id = :id and entity.datada_cadastro = :datada_cadastro")
-  public Pedidos findOne(@Param(value="id") java.lang.String id,@Param(value="datada_cadastro") java.lang.String datada_cadastro);
+  @Query("SELECT entity FROM Pedidos entity WHERE entity.id = :id or entity.numero_controle = :numero_controle")
+  public Pedidos findOne(@Param(value="id") java.lang.String id,@Param(value="numero_controle") java.lang.Long numero_controle);
    
   @Modifying
   @Query("DELETE FROM Pedidos entity WHERE entity.id = :id")
@@ -21,7 +21,11 @@ public interface PedidosDAO extends JpaRepository<Pedidos, java.lang.String> {
 
   @Query("select c from Pedidos c")
   public Page<Pedidos> list(Pageable pageable);
-  
+
+  @Query("SELECT entity FROM Pedidos entity WHERE (:id is null OR entity.id like concat('%',:id,'%')) AND (:numero_controle is null OR entity.numero_controle = :numero_controle)")
+  public Page<Pedidos> specificSearch(@Param(value="id") java.lang.String id, @Param(value="numero_controle") java.lang.Integer numero_controle, Pageable pageable);
+
+
 
 
 }

@@ -51,7 +51,13 @@ public class PedidosREST {
 
 
   @RequestMapping(method = RequestMethod.GET, value = "/{pedidosId}")
-  public Pedidos get(@PathVariable("pedidosId") java.lang.String pedidosId) throws Exception {
-    return pedidosBusiness.get(pedidosId);
+  public Pedidos get(@PathVariable("pedidosId") java.lang.String pedidosId,@PathVariable("numero_controle") java.lang.Long numero_controle) throws Exception {
+    return pedidosBusiness.get(pedidosId, numero_controle);
   }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/specificSearch")
+  public HttpEntity<PagedResources<Pedidos>> specificSearch(java.lang.String id, java.lang.Integer numero_controle, Pageable pageable, PagedResourcesAssembler assembler) {
+    return new ResponseEntity<>(assembler.toResource(pedidosBusiness.specificSearch(id, numero_controle, pageable)), HttpStatus.OK);
+  }
+
 }

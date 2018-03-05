@@ -43,12 +43,11 @@ public class PedidosBusiness {
   }
 
   public void delete(java.lang.String id) throws Exception {
-    Pedidos entity = this.get(id);
-    this.repository.delete(entity);
+    this.repository.delete(id);
   }
 
-  public Pedidos get(java.lang.String id) throws Exception {
-    Pedidos result = repository.findOne(id);
+  public Pedidos get(java.lang.String id,java.lang.Long numero_controle) throws Exception {
+    Pedidos result = repository.findOne(id, numero_controle);
     return result;
   }
 
@@ -56,5 +55,13 @@ public class PedidosBusiness {
     Page<Pedidos> result = repository.list(pageable);
     return result;
   }
+
+    public Page<Pedidos> specificSearch(java.lang.String id, java.lang.Integer numero_controle, Pageable pageable) {
+        return repository.specificSearch(id, numero_controle, pageable);
+    }
+
+
+
+
 }
 

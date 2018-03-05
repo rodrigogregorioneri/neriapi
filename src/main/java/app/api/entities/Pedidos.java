@@ -38,7 +38,7 @@ public class Pedidos implements Serializable {
   private java.lang.String nome;
 
   @Column(name = "numero_controle", nullable = true, unique = true, insertable=true, updatable=true)
-  private java.lang.Long numero_controle;
+  private java.lang.Integer numero_controle;
   
   @Column(name = "quantidade", nullable = false, unique = false, insertable=true, updatable=true)
   private java.lang.Integer quantidade;
@@ -102,12 +102,12 @@ public class Pedidos implements Serializable {
     return this;
   }
   
-  public java.lang.Long getNumero_controle(){
+  public java.lang.Integer getNumero_controle(){
     return this.numero_controle;
   }
   
 
-  public Pedidos setNumero_controle(java.lang.Long numero_controle){
+  public Pedidos setNumero_controle(java.lang.Integer numero_controle){
     this.numero_controle = numero_controle;
     return this;
   }
